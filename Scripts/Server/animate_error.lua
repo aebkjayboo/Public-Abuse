@@ -1,5 +1,3 @@
--- doesn't work anymore lol
-
 local pcall = pcall
 
 local task = task
@@ -11,7 +9,7 @@ local Players = game:GetService("Players")
 
 ---@param Message string
 ---@return boolean
-local function GlobalError(Message)
+local function Error()
 	local success, err = pcall(function()
 		local LocalPlayer = Players.LocalPlayer
 		local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
@@ -20,7 +18,7 @@ local function GlobalError(Message)
 
 		local old_animid = idle_anim.AnimationId
 		animate.Enabled = true
-		idle_anim.AnimationId = "active://" .. ".\n\t\t" .. Message .. "\n"
+		idle_anim.AnimationId = "active://" .. ".\n\t\t" .. "PublicAbuse" .. "\n"
 		task_wait()
 		animate.Enabled = false
 		animate.Enabled = true
@@ -33,6 +31,4 @@ local function GlobalError(Message)
 	return success
 end
 
-GlobalError("fuck all y'all")
-
-return GlobalError
+return Error

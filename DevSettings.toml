@@ -1,6 +1,7 @@
 ConstantSimulation = true
 Debug = true
 StrictNetworkOwner = true
+UseVirtualEnviornment = false
 
 [Parts]
-CountAverageBaseParts = true
+CountAverageBaseParts = false
