@@ -1,13 +1,7 @@
-local pcall = pcall
-
-local task = task
-local task_wait = task.wait
-
-local print = print
+--!nonstrict
 
 local Players = game:GetService("Players")
 
----@param Message string
 ---@return boolean
 local function Error()
 	local success, err = pcall(function()
@@ -18,12 +12,12 @@ local function Error()
 
 		local old_animid = idle_anim.AnimationId
 		animate.Enabled = true
-		idle_anim.AnimationId = "active://" .. ".\n\t\t" .. "PublicAbuse" .. "\n"
-		task_wait()
+		idle_anim.AnimationId = "active://" .. ".\n\t\t" .. "ahhh" .. "\n"
+		task.wait()
 		animate.Enabled = false
 		animate.Enabled = true
 		idle_anim.AnimationId = old_animid
-		task_wait()
+		task.wait()
 		animate.Enabled = false
 		animate.Enabled = true
 	end)

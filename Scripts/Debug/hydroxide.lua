@@ -1,3 +1,5 @@
+--!nonstrict
+
 -- im not dumping hydroxide into a single file currently
 
 local owner = "Upbolt"

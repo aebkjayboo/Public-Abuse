@@ -1,9 +1,11 @@
+--!nonstrict
+
 local function send(text)
 	local StarterGui = game:GetService("StarterGui")
-	StarterGui:SetCore("SendNotification",{
+	StarterGui:SetCore("SendNotification", {
 		Title = "Fling by danya23131", -- You can remove this, idc
 		Text = text,
-		Duration = 5
+		Duration = 5,
 	})
 end
 local fakepart = Instance.new("Part", workspace)
@@ -17,30 +19,31 @@ body.RigidityEnabled = true
 body.Responsiveness = math.huge
 body.MaxForce = math.huge
 body.MaxVelocity = math.huge
-body.MaxAxesForce = Vector3.new(math.huge,math.huge,math.huge)
+body.MaxAxesForce = Vector3.new(math.huge, math.huge, math.huge)
 body.Visible = true
 body.Mode = Enum.PositionAlignmentMode.TwoAttachment
 game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.StrafingNoPhysics)
 send("Please wait")
 local oldcf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0,40000000,0)) * CFrame.fromEulerAnglesXYZ(math.rad(180),0,0)
-game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,1000000,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0, 40000000, 0))
+	* CFrame.fromEulerAnglesXYZ(math.rad(180), 0, 0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 1000000, 0)
 task.wait(3)
-game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcf
-task.wait(.2)	
+task.wait(0.2)
 local power = 100
 local attack = 5
 fakepart.Anchored = true
-fakepart.Size = Vector3.new(5,5,5)
+fakepart.Size = Vector3.new(5, 5, 5)
 fakepart.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 fakepart.CanCollide = false
 fakepart.Transparency = 0.5
 fakepart.Material = Enum.Material.ForceField
-for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 	if v:IsA("BasePart") then
 		if v.Name ~= "HumanoidRootPart" then
-			v.Transparency = .75
+			v.Transparency = 0.75
 			v.Material = Enum.Material.Neon
 		end
 	elseif v:IsA("Decal") then
@@ -49,27 +52,28 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 end
 local partic = Instance.new("ParticleEmitter", fakepart)
 partic.Texture = "rbxassetid://15273937357"
-partic.SpreadAngle = Vector2.new(-180,180)
+partic.SpreadAngle = Vector2.new(-180, 180)
 partic.Rate = 45
-partic.Size = NumberSequence.new(1,0)
+partic.Size = NumberSequence.new(1, 0)
 partic.Transparency = NumberSequence.new(0.9)
-partic.Lifetime = NumberRange.new(0.7,1)
-partic.RotSpeed = NumberRange.new(-45,45)
+partic.Lifetime = NumberRange.new(0.7, 1)
+partic.RotSpeed = NumberRange.new(-45, 45)
 workspace.CurrentCamera.CameraSubject = fakepart
 spawn(function()
 	while true do
 		task.wait()
-		for i = 0,1,0.01 do
+		for i = 0, 1, 0.01 do
 			task.wait()
-			fakepart.Color = Color3.fromHSV(i,1,1)
-			partic.Color = ColorSequence.new(Color3.fromHSV(i,1,1))
+			fakepart.Color = Color3.fromHSV(i, 1, 1)
+			partic.Color = ColorSequence.new(Color3.fromHSV(i, 1, 1))
 		end
 	end
 end)
 spawn(function()
 	while true do
-		game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(math.random(-500,50),math.random(-500,500) * power,math.random(-5,5))
-		task.wait(math.random(0,attack)/50)	
+		game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyAngularVelocity =
+			Vector3.new(math.random(-500, 50), math.random(-500, 500) * power, math.random(-5, 5))
+		task.wait(math.random(0, attack) / 50)
 	end
 end)
 --[[
@@ -160,7 +164,10 @@ spawn(function()
 		if closest then
 			local targetRootPart = closest.Character.HumanoidRootPart
 			local direction = (targetRootPart.Position - localRootPart.Position).unit
-			local lookAtCFrame = CFrame.lookAt(localRootPart.Position, Vector3.new(targetRootPart.Position.X,localRootPart.Position.Y,targetRootPart.Position.Z))
+			local lookAtCFrame = CFrame.lookAt(
+				localRootPart.Position,
+				Vector3.new(targetRootPart.Position.X, localRootPart.Position.Y, targetRootPart.Position.Z)
+			)
 			localRootPart.CFrame = lookAtCFrame
 		end
 
@@ -178,24 +185,26 @@ mouse.Button1Up:Connect(function()
 end)
 game:GetService("RunService").Heartbeat:Connect(function()
 	if isdown then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(mouse.Hit.Position + Vector3.new(math.random(-5,5)/5,math.random(0,8)/2,math.random(-5,5)/5)) * CFrame.fromEulerAnglesXYZ(0,math.rad(45),0)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(10000,9999,-9999)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(-17.7,500,17.7)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+			mouse.Hit.Position + Vector3.new(math.random(-5, 5) / 5, math.random(0, 8) / 2, math.random(-5, 5) / 5)
+		) * CFrame.fromEulerAnglesXYZ(0, math.rad(45), 0)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(10000, 9999, -9999)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(-17.7, 500, 17.7)
 	end
 end)
 spawn(function()
 	while true do
 		game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
-		task.wait(.5)
+		task.wait(0.5)
 		game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-		task.wait(.5)
+		task.wait(0.5)
 	end
 end)
 while true do
 	--game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
 	fakepart.Rotation = game.Players.LocalPlayer.Character.HumanoidRootPart.Rotation
 	game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
-	if math.random(0,1)==1 then
+	if math.random(0, 1) == 1 then
 		game.Players.LocalPlayer.Character.Humanoid.Jump = true
 	else
 		game.Players.LocalPlayer.Character.Humanoid.Jump = false
@@ -203,7 +212,8 @@ while true do
 	if not isdown then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fakepart.CFrame
 	end
-	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(math.random(-250,250),math.random(-500,500),math.random(-250,250))
+	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity =
+		Vector3.new(math.random(-250, 250), math.random(-500, 500), math.random(-250, 250))
 	--game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(math.random(-250,250),math.random(-500,500),math.random(-250,250))
 	--game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyAngularVelocity = Vector3.new(0,180,0)
 	task.wait()

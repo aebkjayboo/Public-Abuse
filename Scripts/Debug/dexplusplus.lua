@@ -1,3 +1,5 @@
+--!nonstrict
+
 do
 	local proto = game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/latest/download/out.lua")
 
@@ -3728,16 +3730,13 @@ return search]==]
 					return nil, specFilterList
 				end
 
-				local env = setmetatable(
-					{
-						["searchResults"] = searchResults,
-						["nodes"] = nodes,
-						["Explorer"] = Explorer,
-						["specResults"] = specResults,
-						["service"] = service,
-					},
-					{ __index = getfenv() }
-				)
+				local env = setmetatable({
+					["searchResults"] = searchResults,
+					["nodes"] = nodes,
+					["Explorer"] = Explorer,
+					["specResults"] = specResults,
+					["service"] = service,
+				}, { __index = getfenv() })
 				setfenv(func, env)
 
 				return func(), specFilterList
@@ -4116,12 +4115,11 @@ return search]==]
 						{
 							1,
 							"Frame",
-							{ BackgroundColor3 = Color3.new(1, 1, 1), BackgroundTransparency = 1, Size = UDim2.new(
-								0,
-								100,
-								0,
-								100
-							) },
+							{
+								BackgroundColor3 = Color3.new(1, 1, 1),
+								BackgroundTransparency = 1,
+								Size = UDim2.new(0, 100, 0, 100),
+							},
 						},
 						{
 							2,
@@ -6709,28 +6707,25 @@ return search]==]
 				end
 
 				local function createFrame(self)
-					local newFrame = createSimple(
-						"Frame",
-						{
-							Style = 0,
-							Active = true,
-							AnchorPoint = Vector2.new(0, 0),
-							BackgroundColor3 = Color3.new(0.35294118523598, 0.35294118523598, 0.35294118523598),
-							BackgroundTransparency = 0,
-							BorderColor3 = Color3.new(0.10588236153126, 0.16470588743687, 0.20784315466881),
-							BorderSizePixel = 0,
-							ClipsDescendants = false,
-							Draggable = false,
-							Position = UDim2.new(1, -16, 0, 0),
-							Rotation = 0,
-							Selectable = false,
-							Size = UDim2.new(0, 16, 1, 0),
-							SizeConstraint = 0,
-							Visible = true,
-							ZIndex = 1,
-							Name = "ScrollBar",
-						}
-					)
+					local newFrame = createSimple("Frame", {
+						Style = 0,
+						Active = true,
+						AnchorPoint = Vector2.new(0, 0),
+						BackgroundColor3 = Color3.new(0.35294118523598, 0.35294118523598, 0.35294118523598),
+						BackgroundTransparency = 0,
+						BorderColor3 = Color3.new(0.10588236153126, 0.16470588743687, 0.20784315466881),
+						BorderSizePixel = 0,
+						ClipsDescendants = false,
+						Draggable = false,
+						Position = UDim2.new(1, -16, 0, 0),
+						Rotation = 0,
+						Selectable = false,
+						Size = UDim2.new(0, 16, 1, 0),
+						SizeConstraint = 0,
+						Visible = true,
+						ZIndex = 1,
+						Name = "ScrollBar",
+					})
 					local button1, button2
 
 					if self.Horizontal then
@@ -10561,10 +10556,8 @@ return search]==]
 								local _, endPos = find(lineText, "%x+", col)
 								local endPart = sub(lineText, endPos, endPos + 1)
 								if
-									(endPart == "e+" or endPart == "e-") and find(
-										sub(lineText, endPos + 2, endPos + 2),
-										"%d"
-									)
+									(endPart == "e+" or endPart == "e-")
+									and find(sub(lineText, endPos + 2, endPos + 2), "%d")
 								then
 									endPos = endPos + 1
 								end
@@ -11709,12 +11702,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 8, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 7 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							8,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 7 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							9,
 							"Frame",
@@ -11765,12 +11762,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 13, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 12 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							13,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 12 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							14,
 							"Frame",
@@ -11972,12 +11973,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 29, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 28 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							29,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 28 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							30,
 							"Frame",
@@ -12028,12 +12033,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 34, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 33 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							34,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 33 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							35,
 							"Frame",
@@ -12143,12 +12152,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 43, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 42 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							43,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 42 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							44,
 							"Frame",
@@ -12199,12 +12212,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 48, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 47 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							48,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 47 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							49,
 							"Frame",
@@ -12326,12 +12343,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 58, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 57 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							58,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 57 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							59,
 							"Frame",
@@ -12382,12 +12403,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 63, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 62 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							63,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 62 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							64,
 							"Frame",
@@ -12497,12 +12522,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 72, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 71 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							72,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 71 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							73,
 							"Frame",
@@ -12553,12 +12582,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 77, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 76 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							77,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 76 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							78,
 							"Frame",
@@ -12668,12 +12701,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 86, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 85 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							86,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 85 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							87,
 							"Frame",
@@ -12724,12 +12761,16 @@ return search]==]
 								TextSize = 14,
 							},
 						},
-						{ 91, "Frame", { BackgroundTransparency = 1, Name = "Arrow", Parent = { 90 }, Size = UDim2.new(
-							0,
-							16,
-							0,
-							8
-						) } },
+						{
+							91,
+							"Frame",
+							{
+								BackgroundTransparency = 1,
+								Name = "Arrow",
+								Parent = { 90 },
+								Size = UDim2.new(0, 16, 0, 8),
+							},
+						},
 						{
 							92,
 							"Frame",
@@ -15072,16 +15113,13 @@ return search]==]
 
 					local obj = initObj(props, mt)
 					obj.Gui = b
-					obj.Anim = Lib.ButtonAnim(
-						b,
-						{
-							Mode = 2,
-							StartColor = Settings.Theme.Button,
-							HoverColor = Settings.Theme.ButtonHover,
-							PressColor = Settings.Theme.ButtonPress,
-							OutlineColor = Settings.Theme.Outline2,
-						}
-					)
+					obj.Anim = Lib.ButtonAnim(b, {
+						Mode = 2,
+						StartColor = Settings.Theme.Button,
+						HoverColor = Settings.Theme.ButtonHover,
+						PressColor = Settings.Theme.ButtonPress,
+						OutlineColor = Settings.Theme.Outline2,
+					})
 
 					b.MouseButton1Click:Connect(function()
 						obj:Trigger("Click", 1)
@@ -15250,15 +15288,12 @@ return search]==]
 
 					local obj = initObj(props, mt)
 					obj.Gui = f
-					obj.Anim = Lib.ButtonAnim(
-						f,
-						{
-							Mode = 2,
-							StartColor = Settings.Theme.TextBox,
-							LerpTo = Settings.Theme.Button,
-							LerpDelta = 0.15,
-						}
-					)
+					obj.Anim = Lib.ButtonAnim(f, {
+						Mode = 2,
+						StartColor = Settings.Theme.TextBox,
+						LerpTo = Settings.Theme.Button,
+						LerpDelta = 0.15,
+					})
 					obj.Context = Lib.ContextMenu.new()
 					obj.Context.Iconless = true
 					obj.Context.MaxHeight = 200
