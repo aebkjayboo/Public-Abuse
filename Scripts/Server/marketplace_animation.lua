@@ -23,6 +23,4 @@ local function PlayMarketplaceAnimation(marketplaceid)
 	return success
 end
 
---PlayMarketplaceAnimation(130371895389423)
-
 return PlayMarketplaceAnimation
